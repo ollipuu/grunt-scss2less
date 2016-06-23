@@ -27,6 +27,7 @@ module.exports = function(grunt) {
     }
 
     async.eachSeries(this.files, function(f, nextFileObj) {
+      var destFile = f.dest;
       var files = f.src.filter(function(filepath) {
         // Warn on and remove invalid source files (if nonull was set).
         if (!grunt.file.exists(filepath)) {
@@ -64,8 +65,7 @@ module.exports = function(grunt) {
             grunt.log.warn('Compiled files were empty.');
           } else {
             _.forEach(lessCodes, function(lessCode, file) {
-              file = file.replace('sass', 'less').replace('scss', 'less');
-              grunt.file.write(file, lessCode);
+              grunt.file.write(destFile, lessCode);
               grunt.log.writeln('File ' + chalk.cyan(file) + ' created');
             });
           }

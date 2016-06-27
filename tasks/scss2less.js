@@ -66,7 +66,7 @@ module.exports = function(grunt) {
           } else {
             _.forEach(lessCodes, function(lessCode, file) {
               grunt.file.write(destFile, lessCode);
-              grunt.log.writeln('File ' + chalk.cyan(file) + ' created');
+              grunt.log.writeln('File ' + chalk.cyan(destFile) + ' created');
             });
           }
           nextFileObj();
